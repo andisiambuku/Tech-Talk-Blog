@@ -1,0 +1,32 @@
+
+.Header{
+ display: flex;
+ justify-content: space-between;
+ box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+ align-items: center;
+ 
+}
+.Logo{
+    padding-left:20px;
+    color: gray;
+}
+.Links{
+   text-decoration: none;
+   padding-right: 20px;
+   color: gray;
+   
+}
+.about{
+    text-decoration: none;
+    margin-right:10px;
+    color: gray;
+}
+.home{
+    text-decoration: none;
+    margin-right:10px;
+    color: gray;
+}
+.addnewpost{
+    text-decoration: none;
+    color: gray;
+}
