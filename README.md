@@ -1,4 +1,4 @@
-# Techie-Blog
+# Tech Talk Blog
 
 ## Description of The Project
 
@@ -40,5 +40,4 @@ git clone <https://github.com/andisiambuku/Tech-Talk-Blog.git>
 @Philipngungi037
 
 ## Copyright and License Information
-
 This project is free to use and does not contains any license.
