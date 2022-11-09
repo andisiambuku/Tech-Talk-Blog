@@ -1,4 +1,4 @@
-# Techie-Blog
+# Tech Talk Blog
 
 ## Description of The Project
 Tech Talk Blog is a web application created with React and Sinatra. This is a blog where people in the technology ecosystem in Africa 
