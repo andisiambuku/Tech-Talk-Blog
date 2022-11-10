@@ -1,45 +1,79 @@
-import React  from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import useFetch from '../hooks/useFetch';
+import React, { useState } from 'react';
+import "./AddNewPost.css"
+import { useNavigate } from 'react-router-dom';
 
 
-
-function Article() {
-    const { id } = useParams();
-    ss
-    const { data: article,error,isPending } = useFetch(`http://localhost:9292/post/${id}`);
+function AddNewPost() {
+    const [title, setTitle] = useState('');
+    const [body, setBody] = useState('');
+    const [author, setAuthor] = useState('');
+    const [isPending,setisPending] = useState(false);
     const navigate = useNavigate();
-    console.log(id)
-    console.log(article)
-    console.log(error)
 
+    const handleSubmit = (e) =>  {
+        e.preventDefault();
+        const article ={ title, body, author };
+        setisPending(true);
 
-    const handleClick = () =>{
-        console.log(id)
-        fetch('http://localhost:9292/post/' + id,{
-            method:'DELETE'
+        fetch('http://localhost:9292/post',{
+            method:'POST',
+            headers:{"Content-Type":"application/json"},
+            body: JSON.stringify(article)
         })
         .then((res)=> res.json())
-        .then(() => {
+        .then(()=>{
+            setAuthor('');
+            setBody('');
+            setTitle('');
+            setisPending(false);
             navigate('/');
         })
     }
+
+
     return(
-        <div className='article-detail'>
-            {isPending && <div>Loading...</div>}
-            {error && <div>{error}</div>}
-            <article className='p-8'>
-            <button className="bg-red-600 p-2 border border-gray-400 rounded-full text-white" onClick={handleClick}>Delete Article</button>
-                <h2 className="text-3xl text-gray-600 font-bold text-center pb-4 font-sans">{ article.title }</h2>
-                <p className='font-sans text-gray-600 font-bold pb-4'>Written by { article.author }</p>
-                <div className='font-sans text-gray-600 pb-4'>{ article.body }</div>
-                
-            </article>
+        <div className="wrapper">
+
+
+                <h3 className="cardTitle">Add New Post</h3>
+                <form onSubmit={handleSubmit}>
+                    <div className="articleTitle">
+                        <label className="articleTitleHead">Article Title:</label>
+                        <input type="text"
+                                id="title"
+                                placeholder="Article Title"
+                                className="inputArticle"
+                                name="title"
+
+                                onChange={(e)=>setTitle(e.target.value)} />
+                    </div>
+                    <div className="articleAuthor">
+                        <label className="authorHead">Article Author:</label>
+                        <input type="text"
+                                id="title"
+                                placeholder="Article Author"
+                                className="inputAuthor"
+                                name="title"
+                                onChange={(e)=>setAuthor(e.target.value)}
+                                />
+                    </div>
+                    <div className="articleBody">
+                        <label className="articleBodyHead">Article Body:</label>
+                        <input type="textarea"
+                                id="content"
+                                placeholder="Enter here"
+                                className="inputBody"
+                                onChange={(e) => setBody(e.target.value)}
+
+                                />
+                    </div>
+                    <container>
+                        <button type="submit" className="addBlog">Add Blog</button>
+                    </container>
+
+                </form>
 
         </div>
     );
-
-
 }
-
-export default Article;
+export default AddNewPost;
