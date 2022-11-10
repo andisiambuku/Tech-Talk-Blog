@@ -3,7 +3,7 @@ import ArticleList from "./ArticleList"
 import useFetch from "../hooks/useFetch"
 
 function Home(){
-    const {data: articles, isPending, error} = useFetch('http://localhost:9292/post');
+    const {data: articles, isPending, error} = useFetch('http://localhost:9292/');
     
     return(
         <div className="Home">

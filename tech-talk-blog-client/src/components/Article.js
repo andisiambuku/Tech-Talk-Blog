@@ -6,7 +6,7 @@ import useFetch from '../hooks/useFetch';
 
 function Article() {
     const { id } = useParams();
-    ss
+    
     const { data: article,error,isPending } = useFetch(`http://localhost:9292/post/${id}`);
     const navigate = useNavigate();
     console.log(id)
