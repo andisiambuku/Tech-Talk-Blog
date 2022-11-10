@@ -11,7 +11,7 @@ This project is a fulfillment of Moringa School's Phase 3 Project Assignment.
 
 ## The Link To the Backend Repository
 
-Take a look at it here:
+Take a look at it here: https://github.com/malise5/backend
 
 ## Link to Live Site
 
