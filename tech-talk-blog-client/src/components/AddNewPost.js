@@ -1,21 +1,23 @@
 import React, { useState } from 'react';
-import "./AddNewPost.css"
+
 import { useNavigate } from 'react-router-dom';
 
 
 function AddNewPost() {
     const [title, setTitle] = useState('');
-    const [body, setBody] = useState('');
+    const [content, setContent] = useState('');
+    const [category,setCategory] = useState('');
     const [author, setAuthor] = useState('');
     const [isPending,setisPending] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = (e) =>  {
         e.preventDefault();
-        const article ={ title, body, author };
+        const article ={ title, content, author,category };
+        console.log(article);
         setisPending(true);
 
-        fetch('http://localhost:9292/post',{
+        fetch('http://localhost:9292/posts',{
             method:'POST',
             headers:{"Content-Type":"application/json"},
             body: JSON.stringify(article)
@@ -23,8 +25,9 @@ function AddNewPost() {
         .then((res)=> res.json())
         .then(()=>{
             setAuthor('');
-            setBody('');
+            setContent('');
             setTitle('');
+            setCategory('');
             setisPending(false);
             navigate('/');
         })
@@ -32,48 +35,53 @@ function AddNewPost() {
 
 
     return(
-        <div className="wrapper">
+        <div className="p-8">
+        <h2 className='text-3xl text-gray-600 font-bold'>Add a New Post</h2>
+        <form className='p-4 flex flex-col' onSubmit={handleSubmit}>
+            <label className='pb-4 mt-4'>Article Title:</label>
+                <input className='p-2 border border-solid border-gray-300'
+                type="text"
+                required
+                value={title}
+                placeholder="Add a title"
+                onChange={(e)=>setTitle(e.target.value)}                    
+                />
+                <label className='pb-4 mt-4'>Article Author:</label>
+                <input className='p-2 border border-solid border-gray-300 '
+                type="text"
+                required
+                value={author}
+                placeholder="Add your name"
+                onChange={(e)=>setAuthor(e.target.value)} 
+            />
+            <label className='pb-4 mt-4'>Article Category:</label>
+                <input className='p-2 border border-solid border-gray-300'
+                type="text"
+                required
+                value={category}
+                placeholder="Add a category"
+                onChange={(e)=>setCategory(e.target.value)}                    
+                />
+                {/* <label className='pb-4 mt-4'>Article Author:</label>
+                <input className='p-2 border border-solid border-gray-300 '
+                type="text"
+                required
+                value={author}
+                placeholder="Add your name"
+                onChange={(e)=>setAuthor(e.target.value)} 
+            /> */}
+            <label className='mt-4 pb-4'>Article Body: </label>
+            <textarea className='py-10 border border-solid border-gray-300'
+                required
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+            />
+            
+            {!isPending && <button className='mx-80 p-2 mt-6 border border-gray-400 rounded-full text-gray-600'>Add Blog</button>}
+            {isPending && <button disabled>Adding Blog</button>}
+        </form>
 
-
-                <h3 className="cardTitle">Add New Post</h3>
-                <form onSubmit={handleSubmit}>
-                    <div className="articleTitle">
-                        <label className="articleTitleHead">Article Title:</label>
-                        <input type="text"
-                                id="title"
-                                placeholder="Article Title"
-                                className="inputArticle"
-                                name="title"
-
-                                onChange={(e)=>setTitle(e.target.value)} />
-                    </div>
-                    <div className="articleAuthor">
-                        <label className="authorHead">Article Author:</label>
-                        <input type="text"
-                                id="title"
-                                placeholder="Article Author"
-                                className="inputAuthor"
-                                name="title"
-                                onChange={(e)=>setAuthor(e.target.value)}
-                                />
-                    </div>
-                    <div className="articleBody">
-                        <label className="articleBodyHead">Article Body:</label>
-                        <input type="textarea"
-                                id="content"
-                                placeholder="Enter here"
-                                className="inputBody"
-                                onChange={(e) => setBody(e.target.value)}
-
-                                />
-                    </div>
-                    <div>
-                        <button type="submit" className="addBlog">Add Blog</button>
-                    </div>
-
-                </form>
-
-        </div>
+    </div>
     );
 }
 export default AddNewPost;

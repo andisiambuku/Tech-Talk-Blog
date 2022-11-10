@@ -7,7 +7,7 @@ import React from 'react';
             
                 { articles.map(article =>(
                             <div className='p-8 ' key={article.id}>
-                                <h3 className="article-category">Category: { article.category }</h3>
+                                <h3 className=" text-gray-600 font-bold">Category: { article.category }</h3>
                                 <Link to={`/articles/${article.id}`}>
                                     <h2 className='font-sans text-2xl text-gray-600 font-bold'>{article.title}</h2>
                                 </Link>

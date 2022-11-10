@@ -10,7 +10,7 @@ function Home(){
             { error && <div>{error}</div>}
             { isPending && <div>Loading...</div>}
             <div className="home-display">
-                <h2 className="title">
+                <h2 className="text-3xl text-gray-600 font-bold text-center pb-4 font-sans">
                     All Posts
                 </h2>
                 <ArticleList articles={articles}/>

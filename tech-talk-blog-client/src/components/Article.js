@@ -4,9 +4,10 @@ import useFetch from '../hooks/useFetch';
 
 
 
+
 function Article() {
-    const [likeCount,setLikeCount] = useState(50);
-    const [dislikeCount,setDislikeCount] = useState(50);
+    const [likeCount,setLikeCount] = useState(1);
+    const [dislikeCount,setDislikeCount] = useState(0);
     const [activeBtn, setActiveBtn] = useState("none");
     
     const { id } = useParams();
@@ -20,7 +21,7 @@ function Article() {
 
     const handleClick = () =>{
         console.log(id)
-        fetch('http://localhost:9292/post/' + id,{
+        fetch('http://localhost:9292/posts/' + id,{
             method:'DELETE'
         })
         .then((res)=> res.json())
@@ -73,36 +74,37 @@ function Article() {
             {error && <div>{error}</div>}
             <article className='p-8'>
             
-                <h3 className="article-category">Category: { article.category }</h3>
-                <h2 className="article-title">{ article.title }</h2>
-                <h3 className="article-time">Created On: { article.created_at }</h3>
+                <h3 className="text-1xl  text-gray-600 font-bold">Category: { article.category }</h3>
+                <button className="bg-red-600 p-2 border border-gray-400 rounded-full text-white" onClick={handleClick}>Delete Article</button>
+                <h2 className="text-3xl text-gray-600 font-bold text-center pb-4 font-sans">{ article.title }</h2>
+                <h3 className="text-1xl text-gray-600 font-bold">Created On: { article.created_at }</h3>
 
-                {/* <p className='article-author'>Written by { article.author }</p> */}
-                <div className='article-body'>{ article.content }</div>
-
-                <button className="delete-button" onClick={handleClick}>Delete Article</button>
-            </article>
-            <div className="container">
+                <p className='article-author'>Written by { article.user_id }</p>
+                <div className='font-sans text-gray-600 pb-4'>{ article.content }</div>
+          
+               
   <div className="btn-container">
     <button
       className={`btn ${activeBtn === "like" ? "like-active" : ""}`}
       onClick={handleLikeClick}
     >
-      <span className="material-symbols-rounded">thumb_up</span>
-      Like {likeCount}
+      {likeCount} <span className="bg-gray-600 p-2 border border-gray-400 rounded-full mx-4 text-white">Like</span>
+       
     </button>
  
     <button
       className={`btn ${activeBtn === "dislike" ? "dislike-active" : ""}`}
       onClick={handleDisikeClick}
     >
-      <span className="material-symbols-rounded">thumb_down</span>
-      Dislike {dislikeCount}
+      {dislikeCount}<span className="bg-pink-600 p-2 mx-4 border border-gray-400 rounded-full text-white">Dislike</span>
+       
     </button>
   </div>
-</div>;
+            </article>
+            
 
         </div>
+        
     );
 
 

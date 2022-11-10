@@ -1,17 +1,17 @@
 import React from "react";
-import "./Header.css"
+
 import { NavLink } from 'react-router-dom'
 
 function Header(){
     return(
-        <div className="Header">
-            <h1 className="Logo">Tech Talk Blog</h1>
-            <div className="Links">
-            <NavLink className={"home"} to="/">Home</NavLink>
-            <NavLink className={"about"} to="/about">About</NavLink>
-            <NavLink className={"addnewpost"} to="/addnewpost">Add New Post</NavLink>
+        <nav className=" hover:text-gray-700 relative px-8 py-4 shadow-lg w-full items-center justify-between flex flex-wrap">
+            <h1 className='text-4xl  text-gray-600 text-left'>Tech Talk Blog</h1>
+            <div className="space-x-4 tex-2xl ">
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/about">About</NavLink>
+                <NavLink to="/addnewpost">Add New Post</NavLink>
             </div>
-        </div>
+        </nav>
     );
 }
 export default Header;
