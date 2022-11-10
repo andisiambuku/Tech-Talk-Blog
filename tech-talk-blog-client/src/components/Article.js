@@ -1,87 +1,50 @@
-import React, { useState } from 'react';
-import "./AddNewPost.css"
-import { useNavigate } from 'react-router-dom';
+import React  from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import useFetch from '../hooks/useFetch';
 
 
-<<<<<<< HEAD
 
 function Article() {
     const { id } = useParams();
-    
+   
     const { data: article,error,isPending } = useFetch(`http://localhost:9292/post/${id}`);
-=======
-function AddNewPost() {
-    const [title, setTitle] = useState('');
-    const [body, setBody] = useState('');
-    const [author, setAuthor] = useState('');
-    const [isPending,setisPending] = useState(false);
->>>>>>> eaefda2ec892fb4a5fe0bffee671d7cab2284a93
     const navigate = useNavigate();
+    console.log(id)
+    console.log(article)
+    console.log(error)
 
-    const handleSubmit = (e) =>  {
-        e.preventDefault();
-        const article ={ title, body, author };
-        setisPending(true);
 
-        fetch('http://localhost:9292/post',{
-            method:'POST',
-            headers:{"Content-Type":"application/json"},
-            body: JSON.stringify(article)
+    const handleClick = () =>{
+        console.log(id)
+        fetch('http://localhost:9292/post/' + id,{
+            method:'DELETE'
         })
         .then((res)=> res.json())
-        .then(()=>{
-            setAuthor('');
-            setBody('');
-            setTitle('');
-            setisPending(false);
+        .then(() => {
             navigate('/');
         })
     }
-
-
     return(
-        <div className="wrapper">
+        <div className='article-detail'>
+            {isPending && <div>Loading...</div>}
+            {error && <div>{error}</div>}
+            <article className='p-8'>
+            <button className="delete-button" onClick={handleClick}>Delete Article</button>
+                <h3 className="article-category">Category: { article.category }</h3>
+                <h2 className="article-title">{ article.title }</h2>
+                <h3 className="article-time">Created On: { article.created_at }</h3>
 
-
-                <h3 className="cardTitle">Add New Post</h3>
-                <form onSubmit={handleSubmit}>
-                    <div className="articleTitle">
-                        <label className="articleTitleHead">Article Title:</label>
-                        <input type="text"
-                                id="title"
-                                placeholder="Article Title"
-                                className="inputArticle"
-                                name="title"
-
-                                onChange={(e)=>setTitle(e.target.value)} />
-                    </div>
-                    <div className="articleAuthor">
-                        <label className="authorHead">Article Author:</label>
-                        <input type="text"
-                                id="title"
-                                placeholder="Article Author"
-                                className="inputAuthor"
-                                name="title"
-                                onChange={(e)=>setAuthor(e.target.value)}
-                                />
-                    </div>
-                    <div className="articleBody">
-                        <label className="articleBodyHead">Article Body:</label>
-                        <input type="textarea"
-                                id="content"
-                                placeholder="Enter here"
-                                className="inputBody"
-                                onChange={(e) => setBody(e.target.value)}
-
-                                />
-                    </div>
-                    <container>
-                        <button type="submit" className="addBlog">Add Blog</button>
-                    </container>
-
-                </form>
+                {/* <p className='article-author'>Written by { article.author }</p> */}
+                <div className='article-body'>{ article.content }</div>
+                
+            </article>
 
         </div>
     );
+
+
 }
-export default AddNewPost;
+
+export default Article;
+
+

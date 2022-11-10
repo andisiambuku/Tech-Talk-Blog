@@ -67,9 +67,9 @@ function AddNewPost() {
 
                                 />
                     </div>
-                    <container>
+                    <div>
                         <button type="submit" className="addBlog">Add Blog</button>
-                    </container>
+                    </div>
 
                 </form>
 

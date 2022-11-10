@@ -7,10 +7,12 @@ import React from 'react';
             
                 { articles.map(article =>(
                             <div className='p-8 ' key={article.id}>
+                                <h3 className="article-category">Category: { article.category }</h3>
                                 <Link to={`/articles/${article.id}`}>
                                     <h2 className='font-sans text-2xl text-gray-600 font-bold'>{article.title}</h2>
                                 </Link>
-                                <p>Written by {article.author}</p>
+                                <h4>Written by {article.user_id}</h4>
+
                                 </div>
                         ))}
         </div>
