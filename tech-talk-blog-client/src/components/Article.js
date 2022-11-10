@@ -72,7 +72,7 @@ function Article() {
             {isPending && <div>Loading...</div>}
             {error && <div>{error}</div>}
             <article className='p-8'>
-            <button className="delete-button" onClick={handleClick}>Delete Article</button>
+            
                 <h3 className="article-category">Category: { article.category }</h3>
                 <h2 className="article-title">{ article.title }</h2>
                 <h3 className="article-time">Created On: { article.created_at }</h3>
@@ -80,7 +80,7 @@ function Article() {
                 {/* <p className='article-author'>Written by { article.author }</p> */}
                 <div className='article-body'>{ article.content }</div>
 
-                
+                <button className="delete-button" onClick={handleClick}>Delete Article</button>
             </article>
             <div className="container">
   <div className="btn-container">
