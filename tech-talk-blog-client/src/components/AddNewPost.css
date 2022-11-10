@@ -15,6 +15,7 @@
 .articleTitleHead {
     line-height: normal;
     padding: 10px;
+    font-weight: bold;
 }
 
 .authorHead {
@@ -41,4 +42,8 @@
     font-size: medium;
     font-weight: bold;
     color: blue;
+}
+.inputBody{
+    width: 40%;
+    height: 180%;
 }
