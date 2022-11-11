@@ -17,6 +17,8 @@ Take a look at it here: https://github.com/Ramayan0/phase-3-sinatra-react-projec
 
 Take a look at it here: <https://tech-talk-blog.vercel.app/>
 
+**Note** As of 11/11/2022 the backend is yet to be deployed but is being worked on hence no data appears on the deployed version of the frontend
+
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
