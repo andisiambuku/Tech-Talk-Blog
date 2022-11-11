@@ -19,48 +19,23 @@ function Header() {
           </NavLink>
         </div>
       </div>
-      <br></br>
-      <br></br>
-
-      <div
-        id="carouselExampleControls"
-        class="carousel slide"
-        data-bs-ride="carousel"
-      >
-        <div class="carousel-inner">
-          <div class="carousel-item active" div="images">
-            <img src={require("./tec.jpg")} class="d-block w-100" alt="..." />
-          </div>
-          <div class="carousel-item">
-            <img
-              src={require("./languages.png")}
-              class="d-block w-100"
-              alt="..."
-            />
-          </div>
-          <div class="carousel-item">
-            <img src={require("./tech.jpeg")} class="d-block w-100" alt="..." />
-          </div>
+      <div class="row">
+        <div class="column">
+          <img src={require("./tech.jpeg")} alt=".." />
         </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleControls"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleControls"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+        <div class="column">
+          <img src={require("./talk.jpeg")} alt=".." />
+        </div>
+        <div class="column">
+          <img src={require("./languages.png")} alt=".." />
+        </div>
       </div>
+
+      {/* <div className="image">
+        <img src={require("./tec.jpg")} className="image" alt="..." />
+      </div> */}
+      <br></br>
+      <br></br>
     </div>
   );
 }

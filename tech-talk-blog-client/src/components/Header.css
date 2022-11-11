@@ -80,10 +80,10 @@
 
   margin-right: 50px;
 }
-#images {
+.image {
   height: 300px;
-  object-fit: contain;
-  width: 157px;
+  /* object-fit: contain; */
+  width: 457px;
 }
 /* .home {
   /* height: 100px; */
@@ -105,4 +105,13 @@
 .footer > p {
   padding: 5px;
   font-size: 14px;
+}
+
+.column {
+  flex: 33.33%;
+  padding: 5px;
+}
+
+.row {
+  display: flex;
 }
